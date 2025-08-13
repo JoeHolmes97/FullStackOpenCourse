@@ -1,1 +1,6 @@
 
+'''mermaid
+sequenceDiagram
+  participant Browser
+  participent Server
+'''
