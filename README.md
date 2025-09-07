@@ -5,14 +5,14 @@ Part 0: Complete
   a: Complete
   b: Complete
   
-Part 1: Incomplete
-  a:
-  b:
-  c:
-  d:
+Part 1: Complete
+  a: Complete
+  b: Complete
+  c: Complete
+  d: Complete
   
 Part 2: Incomplete
-  a:
+  a: Complete
   b:
   c:
   d:
