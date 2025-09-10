@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
+import noteService from './services/notes'
 
 
-const DisplayPeople = ({ persons, filter }) => {
+const DisplayPeople = ({ persons, filter, delBut }) => {
 
     const numbersToShow = (filter==='')
         ? persons
@@ -13,7 +14,7 @@ const DisplayPeople = ({ persons, filter }) => {
             <table>
                 <tbody>
                     {numbersToShow.map(persons =>
-                        <Numbers key={persons.id} name={persons.name} number={persons.number} />
+                        <Numbers key={persons.id} persons={persons} delBut={delBut} />
                     )}
                 </tbody>
             </table>
@@ -21,15 +22,28 @@ const DisplayPeople = ({ persons, filter }) => {
     )
 }
 
-const Numbers = ({ name, number }) => {
+const Numbers = ({ persons, delBut }) => {
+    const deleteNum = ({ id, name }) => {
+        noteService
+            .deleteNumber(id)
+            .then(response => {
+                console.log(response)
+                console.log(name, 'has been removed')
+            }
+            )
+    }
     //console.log({ name }, {number})
+    //console.log(persons.id)
     return (
         <tr>
             <td>
-                {name}                
+                {persons.name}                
             </td>
             <td>
-                {number}
+                {persons.number}
+            </td>
+            <td>
+                {delBut && <button onClick={() => deleteNum(persons)}>Delete</button>}
             </td>
         </tr>
     )
@@ -56,11 +70,16 @@ const AddNumber = ({ persons, setPersons, newName, newNumber, setNewName, setNew
         const nameObject = {
             name: newName,
             number: newNumber,
-            id: (persons.length)+1
         }
-        setPersons(persons.concat(nameObject))
-        setNewName('')
-        setNewNumber('')
+
+        noteService
+            .newNumber(nameObject)
+            .then(returnedNum => {
+                setPersons(persons.concat(returnedNum))
+                console.log(returnedNum)
+                setNewName('')
+                setNewNumber('')
+            })
     }
 
     return (
@@ -75,6 +94,16 @@ const AddNumber = ({ persons, setPersons, newName, newNumber, setNewName, setNew
                 <button type="submit">Add</button>
             </div>
         </form>
+    )
+}
+
+const ToggleDeleteButtons = ({ delBut, showDelBut }) => {
+    return(
+        <div>
+            <button onClick={() => showDelBut(!delBut)}>
+                Show/Hide delete buttons
+            </button>
+        </div>
     )
 }
 
@@ -98,23 +127,20 @@ const App = () => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
     const [filter, setFilter] = useState('')
+    const [delBut, showDelBut] = useState(false)
 
-    const loadPersons = () => {
-        console.log('Loading persons')
-        axios
-            .get('http://localhost:3001/persons')
-            .then(response => {
-                console.log('promise fulfilled')
-                setPersons(response.data)
+    useEffect(() => {
+        noteService
+            .getNumbers()
+            .then(numbers => {
+                setPersons(numbers)
             })
-    }
-    useEffect(loadPersons, [])
+    }, [])
 
     return (
         <div>
             <h2>Phonebook</h2>
 
-            {/*Filter goes here*/}
             <Filter filter={filter} setFilter={setFilter} />
 
             <h3>Add a new number</h3>
@@ -128,7 +154,9 @@ const App = () => {
             />
 
             <h3>Numbers</h3>
-            <DisplayPeople persons={persons} filter={filter} />
+            <DisplayPeople persons={persons} filter={filter} delBut={delBut} />
+
+            <ToggleDeleteButtons delBut={delBut} showDelBut={showDelBut} />
         </div>
     )
 }
