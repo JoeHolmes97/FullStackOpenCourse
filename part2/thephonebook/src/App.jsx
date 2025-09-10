@@ -1,13 +1,17 @@
 import { useState } from 'react'
 
 
-const DisplayPeople = ({ persons }) => {
+const DisplayPeople = ({ persons, filter }) => {
+
+    const numbersToShow = (filter==='')
+        ? persons
+        : persons.filter(persons => persons.name.toLowerCase().includes(filter.toLowerCase()))
 
     return (
         <div>
             <table>
                 <tbody>
-                    {persons.map(persons =>
+                    {numbersToShow.map(persons =>
                         <Numbers key={persons.id} name={persons.name} number={persons.number} />
                     )}
                 </tbody>
@@ -73,7 +77,20 @@ const AddNumber = ({ persons, setPersons, newName, newNumber, setNewName, setNew
     )
 }
 
+const Filter = ({ filter, setFilter }) => {
+    const handleFilter = (event) => {
+        //console.log(event.target.value)
+        setFilter(event.target.value)
+    }
 
+    return (
+        <div>
+            <form>
+                Filter shown with: <input value={filter} onChange={handleFilter}></input>
+            </form>
+        </div>
+    )
+}
 
 const App = () => {
     const [persons, setPersons] = useState([
@@ -91,6 +108,7 @@ const App = () => {
             <h2>Phonebook</h2>
 
             {/*Filter goes here*/}
+            <Filter filter={filter} setFilter={setFilter} />
 
             <h3>Add a new number</h3>
             <AddNumber
@@ -103,7 +121,7 @@ const App = () => {
             />
 
             <h3>Numbers</h3>
-            <DisplayPeople persons={persons} />
+            <DisplayPeople persons={persons} filter={filter} />
         </div>
     )
 }
