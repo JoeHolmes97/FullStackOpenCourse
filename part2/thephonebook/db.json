@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "040-123456",
+      "number": "7979878",
       "id": "1"
     },
     {
@@ -19,16 +19,6 @@
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": "4"
-    },
-    {
-      "id": "31b4",
-      "name": "sddgsg",
-      "number": "363636"
-    },
-    {
-      "id": "6660",
-      "name": "dffhsdg",
-      "number": "7688"
     }
   ]
 }

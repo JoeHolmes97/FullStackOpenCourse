@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\services\\notes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\services\\notes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\main.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -38,32 +38,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "db.json",
-              "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\db.json",
-              "RelativeDocumentMoniker": "db.json",
-              "ToolTip": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\db.json",
-              "RelativeToolTip": "db.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-10T19:06:07.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "package.json",
-              "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\package.json",
-              "RelativeDocumentMoniker": "package.json",
-              "ToolTip": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\package.json",
-              "RelativeToolTip": "package.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-10T19:03:30.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "main.jsx",
               "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\main.jsx",
@@ -77,13 +51,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "db.json",
+              "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\db.json",
+              "RelativeDocumentMoniker": "db.json",
+              "ToolTip": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\db.json",
+              "RelativeToolTip": "db.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-10T19:06:07.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "notes.js",
+              "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\services\\notes.js",
+              "RelativeDocumentMoniker": "src\\services\\notes.js",
+              "ToolTip": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\services\\notes.js",
+              "RelativeToolTip": "src\\services\\notes.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-10T20:35:20.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "App.jsx",
               "DocumentMoniker": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\App.jsx",
               "RelativeDocumentMoniker": "src\\App.jsx",
               "ToolTip": "C:\\Users\\jojoj\\Documents\\GitHub\\FullStackOpenCourse\\part2\\thephonebook\\src\\App.jsx",
               "RelativeToolTip": "src\\App.jsx",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGYAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAJkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-09-07T21:24:57.885Z",
               "EditorCaption": ""

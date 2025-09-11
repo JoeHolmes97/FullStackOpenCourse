@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import noteService from './services/notes'
 
 
-const DisplayPeople = ({ persons, filter, delBut }) => {
+const DisplayPeople = ({ persons, filter, delBut, setDeleted }) => {
 
     const numbersToShow = (filter==='')
         ? persons
@@ -14,7 +14,7 @@ const DisplayPeople = ({ persons, filter, delBut }) => {
             <table>
                 <tbody>
                     {numbersToShow.map(persons =>
-                        <Numbers key={persons.id} persons={persons} delBut={delBut} />
+                        <Numbers key={persons.id} persons={persons} delBut={delBut} setDeleted={setDeleted} />
                     )}
                 </tbody>
             </table>
@@ -22,18 +22,18 @@ const DisplayPeople = ({ persons, filter, delBut }) => {
     )
 }
 
-const Numbers = ({ persons, delBut }) => {
-    const deleteNum = ({ id, name }) => {
-        noteService
-            .deleteNumber(id)
-            .then(response => {
-                console.log(response)
-                console.log(name, 'has been removed')
-            }
-            )
+const Numbers = ({ persons, delBut, setDeleted }) => {
+    const deleteNum = () => {
+        //console.log(persons)
+        if (window.confirm(`Delete ${persons.name}?`)) {
+            noteService
+                .deleteNumber(persons.id)
+                .then(response => {
+                    setDeleted(response.id)
+                    console.log(response.name, 'has been removed')
+                })
+        }
     }
-    //console.log({ name }, {number})
-    //console.log(persons.id)
     return (
         <tr>
             <td>
@@ -43,7 +43,7 @@ const Numbers = ({ persons, delBut }) => {
                 {persons.number}
             </td>
             <td>
-                {delBut && <button onClick={() => deleteNum(persons)}>Delete</button>}
+                {delBut && <button onClick={() => deleteNum()}>Delete</button>}
             </td>
         </tr>
     )
@@ -59,17 +59,28 @@ const AddNumber = ({ persons, setPersons, newName, newNumber, setNewName, setNew
         event.preventDefault()
         console.log('Button clicked', event.target)
 
+        const nameObject = {
+            name: newName,
+            number: newNumber,
+        }
+
         if (newName === '' || newNumber === '') {
             return (alert(`Please fill both inputs`))
         }
         console.log(newName)
         if (persons.some(item => item.name === newName)) {
-            return (alert(`${newName} is already added to phonebook`))
-        }
+            if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+                const updateId = (persons.find(item => item.name === newName)).id
+                noteService
+                    .updateNumber(updateId, nameObject)
+                    .then(returnedNum => {
+                        setPersons(persons.map(persons => persons.id === updateId ? returnedNum : persons))
+                    })
+                return
 
-        const nameObject = {
-            name: newName,
-            number: newNumber,
+            } else {
+                return (alert('Please enter a different name'))
+            }
         }
 
         noteService
@@ -128,6 +139,7 @@ const App = () => {
     const [newNumber, setNewNumber] = useState('')
     const [filter, setFilter] = useState('')
     const [delBut, showDelBut] = useState(false)
+    const [deleted, setDeleted] = useState('')
 
     useEffect(() => {
         noteService
@@ -135,7 +147,8 @@ const App = () => {
             .then(numbers => {
                 setPersons(numbers)
             })
-    }, [])
+    }, [deleted])
+
 
     return (
         <div>
@@ -154,7 +167,12 @@ const App = () => {
             />
 
             <h3>Numbers</h3>
-            <DisplayPeople persons={persons} filter={filter} delBut={delBut} />
+            <DisplayPeople
+                persons={persons}
+                filter={filter}
+                delBut={delBut}
+                setDeleted={setDeleted}
+            />
 
             <ToggleDeleteButtons delBut={delBut} showDelBut={showDelBut} />
         </div>
